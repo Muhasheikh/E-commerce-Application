@@ -98,6 +98,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 //        productRandomKey = saveCurrentDate + saveCurrentTime;
 
 
+        
 
        final DatabaseReference cartListref = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
