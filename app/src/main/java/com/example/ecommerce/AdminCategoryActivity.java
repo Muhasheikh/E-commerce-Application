@@ -3,6 +3,7 @@ package com.example.ecommerce;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,7 @@ public class AdminCategoryActivity extends AppCompatActivity
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
+    private  Button logoutbtn,checkorderbtn,maintainProductsbtn;
 
 
     @Override
@@ -35,6 +37,41 @@ public class AdminCategoryActivity extends AppCompatActivity
         Laptops = findViewById(R.id.laptop_pc);
         watches = findViewById(R.id.watches);
         mobilePhones = findViewById(R.id.mobilephones);
+
+        logoutbtn=findViewById(R.id.admin_logout);
+        checkorderbtn=findViewById(R.id.check_order);
+        maintainProductsbtn=findViewById(R.id.maintain_products);
+
+
+        maintainProductsbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
+                intent.putExtra("Admin", "Admin");
+                startActivity(intent);
+
+            }
+        });
+
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        checkorderbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminCategoryActivity.this, AdminNewOrdersActivity.class);
+
+                startActivity(intent);
+            }
+        });
 
 
         tShirts.setOnClickListener(new View.OnClickListener() {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminCategoryActivity">
+    tools:context="com.example.ecommerce.Admin.AdminCategoryActivity">
 
     <TextView
         android:id="@+id/slogan_category"
@@ -149,6 +149,46 @@
 
     </LinearLayout>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Log Out"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:id="@+id/admin_logout"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textAllCaps="false"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:text="Check Order"
+        android:layout_above="@+id/admin_logout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+
+        android:id="@+id/check_order"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:id="@+id/maintain_products"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/check_order"
+        android:layout_marginLeft="20dp"
+
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+
+        android:background="@color/colorPrimaryDark"
+        android:text="Maintain Products"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

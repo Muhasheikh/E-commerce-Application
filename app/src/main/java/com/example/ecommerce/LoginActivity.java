@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
-    private TextView AdminLink, NotAdminLink;
+    private TextView AdminLink, NotAdminLink,Forgotpassword;
 
     private String parentDbName = "Users";
     private CheckBox chkBoxRememberMe;
@@ -47,7 +47,10 @@ public class LoginActivity extends AppCompatActivity
         InputPhoneNumber =  findViewById(R.id.login_phone_number_input);
         AdminLink = findViewById(R.id.admin_panel_link);
         NotAdminLink = findViewById(R.id.not_admin_panel_link);
+        Forgotpassword = findViewById(R.id.forget_password_link);
         loadingBar = new ProgressDialog(this);
+
+
 
 
         chkBoxRememberMe = findViewById(R.id.remember_me_chkb);
@@ -62,11 +65,20 @@ public class LoginActivity extends AppCompatActivity
             }
         });
 
+        Forgotpassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,ResetPasswordActivity.class);
+                intent.putExtra("check","login");
+                startActivity(intent);
+            }
+        });
+
         AdminLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                LoginButton.setText("Login Admin");
+                LoginButton.setText("Admin");
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdminLink.setVisibility(View.VISIBLE);
                 parentDbName = "Admins";
@@ -141,7 +153,7 @@ public class LoginActivity extends AppCompatActivity
                         {
                             if (parentDbName.equals("Admins"))
                             {
-                                Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Welcome com.example.ecommerce.Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);

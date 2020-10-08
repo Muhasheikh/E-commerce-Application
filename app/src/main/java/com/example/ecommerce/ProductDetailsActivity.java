@@ -35,7 +35,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private ImageView productImage;
     private ElegantNumberButton numberButton;
     private TextView productPrice,productDescription,productName;
-    private String productID = "";
+    private String productID = "",state = "Normal";
     private Button addtocartbtn,deletebtn;
     private DatabaseReference cartListref;
 
@@ -48,39 +48,51 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productID=getIntent().getStringExtra("pid");
         addtocartbtn = findViewById(R.id.pd_add_to_cart_btn);
 
-        floatingaddToCartBtn=findViewById(R.id.add_product_to_cart);
+
+
+
+
         numberButton=findViewById(R.id.number_btn);
         productImage=findViewById(R.id.product_image_details);
         productName=findViewById(R.id.product_name_details);
         productDescription=findViewById(R.id.product_description_details);
         productPrice=findViewById(R.id.product_price_details);
 
-        deletebtn=findViewById(R.id.btn_delete);
+
 
         getProductDetails(productID);
+
+
 
         addtocartbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addingtocart();
+
+
+                if(state.equals("Order Placed") || state.equals("Order Shipped"))
+                {
+                    Toast.makeText(ProductDetailsActivity.this, "You can add or purchase more products,once your order is shipped or confirmed", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    addingtocart();
+                }
             }
         });
 
-        deletebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatabaseReference  mPostReference = FirebaseDatabase.getInstance().getReference()
-                        .child("Cart List").child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products").child(productID);
-
-                        mPostReference.setValue(null);
-            }
-        });
 
 
 
 
 
 
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        CheckOrderState();
     }
 
     private void addingtocart() {
@@ -98,7 +110,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 //        productRandomKey = saveCurrentDate + saveCurrentTime;
 
 
-        
+
 
        final DatabaseReference cartListref = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
@@ -156,11 +168,49 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 {
                     Products products = dataSnapshot.getValue(Products.class);
                     productName.setText(products.getPname());
-                    productPrice.setText(" Rs "+ products.getPrice());
+                   productPrice.setText(products.getPrice());
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
 
+
+
                 }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void CheckOrderState()
+    {
+        DatabaseReference orderref;
+        orderref = FirebaseDatabase.getInstance().getReference().child("Orders")
+                .child(Prevalent.currentOnlineUser.getPhone());
+
+        orderref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+                if(datasnapshot.exists()){
+
+                    String shippingState = datasnapshot.child("state").getValue().toString();
+
+
+                    if(shippingState.equals("shipped"))
+                    {
+                        state = "Order Shipped";
+
+                    }
+                    else if(shippingState.equals("not shipped")){
+
+                      state="Order Placed";
+
+                    }
+                }
+
             }
 
             @Override

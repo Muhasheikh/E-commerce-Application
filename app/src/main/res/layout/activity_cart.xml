@@ -10,13 +10,6 @@
 
 
 
-    <RelativeLayout
-        android:id="@+id/rll"
-        android:layout_marginTop="600dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentTop="true">
 
 
 
@@ -30,17 +23,20 @@
         android:textSize="25dp"
          android:textAlignment="textStart"
             android:textStyle="bold"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@+id/next_process_btn"
             android:layout_marginLeft="20dp"
             />
 
 
-    </RelativeLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
 
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/total_amount"
         android:id="@+id/Cart_List"
         android:layout_marginTop="90dp"/>
 
@@ -66,5 +62,22 @@
 
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/ordertext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_below="@+id/Cart_List"
+        android:textAlignment="center"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:visibility="gone"
+        android:textSize="20dp"
+        android:text="Your Order Has Been Placed Successfully.Soon It'll Be Verified "/>
+
+
+
 
 </RelativeLayout>
+
