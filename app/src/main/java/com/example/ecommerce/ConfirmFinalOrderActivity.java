@@ -47,6 +47,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Check();
+
+
             }
         });
 
