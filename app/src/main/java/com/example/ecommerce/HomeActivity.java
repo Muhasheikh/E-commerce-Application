@@ -137,7 +137,7 @@ public class HomeActivity extends AppCompatActivity
 
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
-                    @SuppressLint("SetTextI18n")
+
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull final Products model)
                     {

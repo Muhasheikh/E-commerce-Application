@@ -3,6 +3,7 @@ package com.example.ecommerce;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button nxtprocessbtn;
-    private TextView txttotalamount,ordertext;
+    private TextView txttotalamount,ordertext,shoppongcart;
 
     private int overTotalPrice  = 0 ;
 
@@ -51,6 +52,7 @@ public class CartActivity extends AppCompatActivity {
         nxtprocessbtn=findViewById(R.id.next_process_btn);
         txttotalamount = findViewById(R.id.total_amount);
         ordertext = findViewById(R.id.ordertext);
+        shoppongcart = findViewById(R.id.shoppingcart);
 
 
 
@@ -148,7 +150,7 @@ public class CartActivity extends AppCompatActivity {
                                                     if(task.isSuccessful())
                                                     {
                                                         Toast.makeText(CartActivity.this, "Item Removed Successfully", Toast.LENGTH_SHORT).show();
-                                                        Intent intent= new Intent(CartActivity.this,CartActivity.class);
+                                                        Intent intent= new Intent(CartActivity.this,HomeActivity.class);
 
                                                         startActivity(intent);
 
@@ -221,6 +223,7 @@ public class CartActivity extends AppCompatActivity {
                         txttotalamount.setText("               Not Shipped Yet");
 
                         recyclerView.setVisibility(View.GONE);
+                        shoppongcart.setVisibility(View.GONE);
 
                         ordertext.setVisibility(View.VISIBLE);
                         nxtprocessbtn.setVisibility(View.GONE);

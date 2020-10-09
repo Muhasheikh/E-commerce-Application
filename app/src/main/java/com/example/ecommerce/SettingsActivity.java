@@ -44,9 +44,10 @@ public class SettingsActivity extends AppCompatActivity
     private Uri imageUri;
     private String myUrl = "";
     private StorageTask uploadTask;
+    private Task<Void> userRef;
     private StorageReference storageProfilePrictureRef;
     private String checker = "";
-    private Button securityquestiobbtn;
+    private Button securityquestiobbtn,deleteuser;
 
 
     @Override
@@ -65,6 +66,7 @@ public class SettingsActivity extends AppCompatActivity
         closeTextBtn = findViewById(R.id.close_settings_btn);
         saveTextButton = findViewById(R.id.update_account_settings_btn);
         securityquestiobbtn=findViewById(R.id.security_questions_btn);
+        deleteuser=findViewById(R.id.delete_user);
 
 
         securityquestiobbtn.setOnClickListener(new View.OnClickListener() {
@@ -76,8 +78,25 @@ public class SettingsActivity extends AppCompatActivity
             }
         });
 
+        deleteuser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                userRef = FirebaseDatabase.getInstance().getReference().child("Users")
+                       .child(Prevalent.currentOnlineUser.getPhone()).removeValue();
+
+                Intent intent = new Intent(SettingsActivity.this,MainActivity.class);;
+                startActivity(intent);
+                finish();
+
+
+            }
+        });
+
 
         userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText);
+
+
 
 
         closeTextBtn.setOnClickListener(new View.OnClickListener() {

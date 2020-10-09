@@ -153,7 +153,7 @@ public class LoginActivity extends AppCompatActivity
                         {
                             if (parentDbName.equals("Admins"))
                             {
-                                Toast.makeText(LoginActivity.this, "Welcome com.example.ecommerce.Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Welcome Admin, you are logged in Successfully...", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
 
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);

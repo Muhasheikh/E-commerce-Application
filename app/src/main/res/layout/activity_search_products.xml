@@ -22,9 +22,10 @@
         android:id="@+id/search_btn"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+
         android:text="Search"
         android:textStyle="bold"
-        android:background="@color/cardview_light_background"
+        android:background="@android:color/transparent"
         android:layout_toRightOf="@+id/search_product"
         android:textSize="20dp"/>
 

@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ResetPasswordActivity"></activity>
-        <activity android:name=".Admin.AdminMaintainProductsActivity" />
+        <activity android:name=".AdminMaintainProductsActivity" />
         <activity android:name=".SearchProductsActivity" />
-        <activity android:name=".Admin.AdminUserProducts" />
-        <activity android:name=".Admin.AdminNewOrdersActivity" />
+        <activity android:name=".AdminUserProducts" />
+        <activity android:name=".AdminNewOrdersActivity" />
         <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".ProductDetailsActivity" />
@@ -29,8 +29,8 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".Admin.AdminAddNewProductActivity" />
-        <activity android:name=".Admin.AdminCategoryActivity" />
+        <activity android:name=".AdminAddNewProductActivity" />
+        <activity android:name=".AdminCategoryActivity" />
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
